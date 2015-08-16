@@ -1,7 +1,6 @@
-package com.p1.demo.backend.conf;
+package com.p1.demo.backend;
 
 import com.p1.demo.backend.domain.Customer;
-import com.p1.demo.backend.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
