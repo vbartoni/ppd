@@ -27,7 +27,9 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework:spring-jms")
-    compile("org.apache.activemq:activemq-broker")
+    compile("org.apache.activemq:activemq-core:5.7.0")
+    compile("org.apache.activemq:activemq-pool:5.7.0")
+//    compile("org.apache.activemq:activemq-com")
     testCompile("junit:junit")
 }
 
