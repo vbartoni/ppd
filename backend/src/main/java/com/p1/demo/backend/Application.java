@@ -1,16 +1,25 @@
 package com.p1.demo.backend;
 
 import com.p1.demo.backend.domain.Customer;
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
     @Autowired
     CustomerRepository repository;
+
+    @Bean(destroyMethod = "stop")
+    public ActiveMQConnectionFactory getActiveMQConnectionFactory(){
+        ActiveMQConnectionFactory amqcf = new ActiveMQConnectionFactory();
+        amqcf.setBrokerURL("tcp://localhost:61616");
+        return amqcf;
+    }
     
     public static void main(String[] args) {
         SpringApplication.run(Application.class);

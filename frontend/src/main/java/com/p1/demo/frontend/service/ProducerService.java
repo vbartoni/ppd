@@ -19,12 +19,12 @@ public class ProducerService {
 
     // Send a message
 
-    public void send() {
+    public void send(final String name) {
         System.out.println("send() enter");
         MessageCreator messageCreator = new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
-                return session.createTextMessage("ping!");
+                return session.createTextMessage("ping!" + name);
             }
         };
         //JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
