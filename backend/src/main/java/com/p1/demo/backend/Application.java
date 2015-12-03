@@ -3,30 +3,44 @@ package com.p1.demo.backend;
 import com.p1.demo.backend.domain.Customer;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.util.FileSystemUtils;
+
+import java.io.File;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+@EnableJms
+public class Application{
 
     @Autowired
     CustomerRepository repository;
 
-    @Bean(destroyMethod = "stop")
+    @Bean
     public ActiveMQConnectionFactory getActiveMQConnectionFactory(){
         ActiveMQConnectionFactory amqcf = new ActiveMQConnectionFactory();
         amqcf.setBrokerURL("tcp://localhost:61616");
         return amqcf;
     }
-    
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class);
+
+    @Bean(name="myJmsContainerFactory")
+    public DefaultJmsListenerContainerFactory myJmsListenerContainerFactory() {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(getActiveMQConnectionFactory());
+        return factory;
     }
 
-    @Override
-    public void run(String... strings) throws Exception {
+    public static void main(String[] args) {
+        FileSystemUtils.deleteRecursively(new File("activemq-data"));
+        System.out.println("Starting backend application");
+        SpringApplication.run(Application.class);
+        System.out.println("Backend application started");
+    }
+
+    public void runDatabase(String... strings) throws Exception {
         // save a couple of customers
         repository.save(new Customer("Jack", "Bauer"));
         repository.save(new Customer("Chloe", "O'Brian"));

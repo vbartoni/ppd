@@ -17,8 +17,6 @@ public class ProducerService {
     @Autowired
     JmsTemplate jmsTemplate;
 
-    // Send a message
-
     public void send(final String name) {
         System.out.println("send() enter");
         MessageCreator messageCreator = new MessageCreator() {
@@ -27,7 +25,6 @@ public class ProducerService {
                 return session.createTextMessage("ping!" + name);
             }
         };
-        //JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
         System.out.println("Sending a new message.");
         jmsTemplate.send("mailbox-destination", messageCreator);
     }
