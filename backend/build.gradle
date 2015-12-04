@@ -31,6 +31,7 @@ dependencies {
     compile("org.springframework:spring-jms")
     compile("org.apache.activemq:activemq-core:5.7.0")
     compile("org.apache.activemq:activemq-pool:5.7.0")
+    compile("com.fasterxml.jackson.core:jackson-databind:2.6.3")
     testCompile("junit:junit")
 }
 

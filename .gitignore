@@ -2,8 +2,7 @@
 .gradle
 build/
 
-**/.gradle
-
+Dependency/
 # Ignore Gradle GUI config
 gradle-app.setting
 

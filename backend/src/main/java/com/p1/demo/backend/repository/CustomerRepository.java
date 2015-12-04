@@ -1,9 +1,9 @@
-package com.p1.demo.backend;
-
-import java.util.List;
+package com.p1.demo.backend.repository;
 
 import com.p1.demo.backend.domain.Customer;
 import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 

@@ -1,6 +1,8 @@
 package com.p1.demo.backend;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.p1.demo.backend.domain.Customer;
+import com.p1.demo.backend.repository.CustomerRepository;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -8,9 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
-import org.springframework.util.FileSystemUtils;
-
-import java.io.File;
 
 @SpringBootApplication
 @EnableJms
@@ -26,18 +25,20 @@ public class Application{
         return amqcf;
     }
 
-    @Bean(name="myJmsContainerFactory")
-    public DefaultJmsListenerContainerFactory myJmsListenerContainerFactory() {
+    @Bean(name="defaultJmsListenerContainerFactory")
+    public DefaultJmsListenerContainerFactory defaultJmsListenerContainerFactory() {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(getActiveMQConnectionFactory());
         return factory;
     }
 
+    @Bean
+    public ObjectMapper getObjectMapper(){
+        return new ObjectMapper();
+    }
+
     public static void main(String[] args) {
-        FileSystemUtils.deleteRecursively(new File("activemq-data"));
-        System.out.println("Starting backend application");
         SpringApplication.run(Application.class);
-        System.out.println("Backend application started");
     }
 
     public void runDatabase(String... strings) throws Exception {
