@@ -1,0 +1,14 @@
+ [
+   {
+     "values": [197141504, 175136768],
+     "dstypes": ["counter", "counter"],
+     "dsnames": ["read", "write"],
+     "time": 1251533299,
+     "interval": 10,
+     "host": "test.host",
+     "plugin": "disk",
+     "plugin_instance": "sda",
+     "type": "disk_octets",
+     "type_instance": ""
+   }
+ ]
