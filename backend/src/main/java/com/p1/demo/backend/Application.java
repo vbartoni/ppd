@@ -1,7 +1,7 @@
 package com.p1.demo.backend;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.p1.demo.backend.domain.Customer;
+import com.p1.demo.backend.domain.jpa.Customer;
 import com.p1.demo.backend.repository.CustomerRepository;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.p1.demo.backend.domain;
+package com.p1.demo.backend.domain.jpa;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,6 +1,6 @@
 package com.p1.demo.backend.repository;
 
-import com.p1.demo.backend.domain.Customer;
+import com.p1.demo.backend.domain.jpa.Customer;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

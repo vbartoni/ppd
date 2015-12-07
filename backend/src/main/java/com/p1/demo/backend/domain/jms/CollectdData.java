@@ -1,23 +1,7 @@
-package com.p1.demo.frontend.domain;
+package com.p1.demo.backend.domain.jms;
 
 import java.util.List;
 
-/**
- * Created by bartpved on 2015-12-04.
- */
-
-/*
-"values": [197141504, 175136768],
-     "dstypes": ["counter", "counter"],
-     "dsnames": ["read", "write"],
-     "time": 1251533299,
-     "interval": 10,
-     "host": "leeloo.lan.home.verplant.org",
-     "plugin": "disk",
-     "plugin_instance": "sda",
-     "type": "disk_octets",
-     "type_instance": ""
- */
 public class CollectdData {
     List<String> values;
     List<String> dstypes;

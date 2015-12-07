@@ -1,5 +1,6 @@
 package com.p1.demo.frontend;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +13,12 @@ import java.io.File;
 
 @SpringBootApplication
 public class Application {
+
+    @Bean
+    public ObjectMapper getObjectMapper(){
+        return new ObjectMapper();
+    }
+
 
     @Bean
     public ActiveMQConnectionFactory getActiveMQConnectionFactory(){
